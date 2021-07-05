@@ -49,6 +49,7 @@ data.myProfile.posts.forEach((post) => {
         <div class="details">
             <div class="user-name">${data.myProfile.details.name} ${data.myProfile.details.surname}</div>
             <div class="post-date">${post.date}</div>
+            <i class="fas fa-trash">delete post</i>
         </div>
     </div> 
     <div class="post-text">
@@ -70,3 +71,54 @@ data.myProfile.posts.forEach((post) => {
 
     postListHtml.innerHTML += `<div class="post"> ${postHtml} </div>`
 }) 
+
+
+
+// new post
+const buttonInput = document.querySelector("button.send");
+
+buttonInput.addEventListener("click", function() {
+
+    const textInput = document.querySelector("textarea");
+    let newPostText = textInput.value;
+    let TodayDate = '05-07-2021'
+
+    data.myProfile.posts.push(
+        {
+            text: newPostText, 
+            data: TodayDate
+        }
+    );
+    
+    textInput.value = '';
+
+    let newPost = `
+    <div class="post-details"> 
+        <div class="user-pic">
+            <img src="${data.myProfile.details.pic}" alt="user pic">
+        </div>
+        <div class="details">
+            <div class="user-name">${data.myProfile.details.name} ${data.myProfile.details.surname}</div>
+            <div class="post-date">${TodayDate}</div>
+            <i class="fas fa-trash"> delete post </i>
+        </div>
+    </div> 
+    <div class="post-text">
+        ${newPostText}
+    </div>
+    ` 
+    postListHtml.innerHTML += `<div class="post"> ${newPost} </div>`
+
+})
+
+
+
+
+
+
+
+
+
+
+
+

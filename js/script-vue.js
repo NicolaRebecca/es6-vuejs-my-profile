@@ -35,7 +35,7 @@ new Vue(
         methods: {
             newPost: function() {
                 let newInput = this.newPostText;
-                    this.myProfile.posts.push({
+                    this.myProfile.posts.unshift({
                         text: newInput,
                         date: '05-07-2021'
                     })
